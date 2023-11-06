@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Player from "./components/Player";
+import Gameboard from "./components/Gameboard";
 
 //create a refresh indicator--------------------
 
@@ -14,15 +15,19 @@ function App() {
   //refresh indicator-------------------------------
   const description = genRandomInt(array.length);
 //--------------------------------
+
+
+
+
   return (
     <main>
       {description}
       <div id="game-container">
         <ol id="players">
-          <Player name="player 1" symbol="X" />
-          <Player name="player 2" symbol="O" />
+          <Player initialName="player 1" symbol="X" />
+          <Player initialName="player 2" symbol="O" />
         </ol>
-        Game Board
+        <Gameboard />
       </div>
       LOG
     </main>
