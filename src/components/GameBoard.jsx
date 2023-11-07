@@ -37,7 +37,7 @@ for ( const turn of turns ) {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={()=>onSelectSqure(rowIndex,colIndex)}>{playerSymbol}</button>
+                <button onClick={()=>onSelectSqure(rowIndex,colIndex)} disabled={playerSymbol!==null}>{playerSymbol}</button>
               </li>
             ))}
           </ol>

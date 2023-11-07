@@ -3,12 +3,24 @@ import Player from "./components/Player";
 import Gameboard from "./components/Gameboard";
 import Log from "./components/Log";
 
+function deriveActivePlayer(gameTurns) {
+  let currentPlayer = "X";
+  if (gameTurns.length > 0 && gameTurns[0].player === "X") {
+    currentPlayer = "O";
+  }
+  return currentPlayer;
+} 
+
 //create a refresh indicator--------------------
 
 const array = Array.from({ length: 100 }, (_, index) => index + 1);
 function genRandomInt(max) {
   return Math.floor(Math.random() * (max + 1));
 }
+
+
+
+
 
 //-----------------------------------------------
 
@@ -18,17 +30,14 @@ function App() {
   //--------------------------------
   const [gameTurns, setGameTurns] = useState([]);
 
-  const [activePlayer, setActivePlayer] = useState("X");
+  //const [activePlayer, setActivePlayer] = useState("X");
+  const activePlayer = deriveActivePlayer(gameTurns);
 
   function handleSelectSquire(rowIndex, colIndex) {
-    setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
+    //setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
     setGameTurns(prevTurns=>{
-      let currentPlayer ='X'
 
-      if (prevTurns.length > 0 && prevTurns[0].player ==="X"){
-        currentPlayer = 'O';
-      }
-
+      const currentPlayer = deriveActivePlayer(prevTurns);
 
       const updatedTurns = [{square : {row : rowIndex, col: colIndex }, player: currentPlayer },  ...prevTurns]
 
