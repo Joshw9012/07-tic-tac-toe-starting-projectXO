@@ -3,7 +3,7 @@ import Player from "./components/Player";
 import Gameboard from "./components/Gameboard";
 import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./winning-combinations";
-
+import GameOver from "./components/GameOver";
 
 
 const initialGameBoard = [
@@ -76,6 +76,8 @@ function App() {
     })
   }
 
+  const hasDraw = gameTurns.length ===9 && !winner
+
   return (
     <main>
       {description}
@@ -93,11 +95,11 @@ function App() {
             isActive={activePlayer === "O"}
           />
         </ol>
-        {winner && <p> You won, {winner}!</p>}
+        {(winner || hasDraw)  && <GameOver winner={winner}/>}
         <Gameboard
           onSelectSqure={handleSelectSquire}
           board={gameBoard}
-        />{" "}
+        />
 
       </div>
       <Log />
