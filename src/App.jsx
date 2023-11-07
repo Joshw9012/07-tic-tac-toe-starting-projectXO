@@ -2,6 +2,8 @@ import { useState } from "react";
 import Player from "./components/Player";
 import Gameboard from "./components/Gameboard";
 import Log from "./components/Log";
+import { WINNING_COMBINATIONS } from "./winning-combinations";
+
 
 function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
@@ -32,6 +34,7 @@ function App() {
 
   //const [activePlayer, setActivePlayer] = useState("X");
   const activePlayer = deriveActivePlayer(gameTurns);
+
 
   function handleSelectSquire(rowIndex, colIndex) {
     //setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
